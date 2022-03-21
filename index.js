@@ -139,8 +139,6 @@ function buildGrid() {
     cell.addEventListener('click', playerMove, false);
     grid.appendChild(cell);
   }
-  /* cells = document.querySelectorAll('li'); //Returns a NodeList, not an Array
-  See https://css-tricks.com/snippets/javascript/loop-queryselectorall-matches */
   cells = Array.prototype.slice.call(grid.getElementsByTagName('div'));
 }
 
