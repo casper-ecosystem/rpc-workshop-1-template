@@ -6,6 +6,6 @@ To run locally:
 
 ```bash
 git clone https://github.com/dylanireland/rpc-workshop-1.git
-cd rpc-workshop 1
+cd rpc-workshop-1
 python3 -m http.server
 ```
