@@ -20,7 +20,7 @@ async function createDeploy() {
     return;
   }
 
-  const args = RuntimeArgs.fromMap({ 'score': CLValueBuilder.u512(score) });
+  const args = RuntimeArgs.fromMap({ 'score': CLValueBuilder.u512(100) });
   const pubkey = CLPublicKey.fromHex(activeKey);
   contract.setContractHash("hash-75143aa704675b7dead20ac2ee06c1c3eccff4ffcf1eb9aebb8cce7c35648041");
   const result = contract.callEntrypoint("add_highscore", args, pubkey, "casper-test", csprToMotes(1).toString(), [], 10000000);
@@ -98,6 +98,19 @@ async function getDeploy(deployHash) {
     alert(error);
     stopAnimation("Error deploying", "#CF000F");
     clearInterval(getDeployInterval);
+  });
+}
+
+async function getHighscore(pubkey) {
+  axios.get("/getHighscore", {
+    params: {
+      hash: pubkey,
+    }
+  }).then((response) => {
+    console.log(response);
+
+  }).catch((error) => {
+    alert(error);
   });
 }
 
