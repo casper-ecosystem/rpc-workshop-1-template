@@ -6,6 +6,8 @@ var userMark = '';
 var cells;
 var thatsGame = false;
 var score = 0;
+const statusLabel = document.querySelector("#title-status > h2");
+var animatorInterval = null;
 
 // add click listener to radio buttons
 function setPlayer() {
@@ -153,6 +155,35 @@ resetButton.addEventListener('click', function(e) {
   resetGrid();
 });
 
-function updateStatus(status) {
-  document.querySelector("#title-status > h2").innerHTML = "Status: " + status;
+function updateStatus(status, color = null) {
+  statusLabel.innerHTML = "Status: " + status;
+  if (color != null) {
+    statusLabel.style.color = color;
+  } else {
+    statusLabel.style.color = "#000";
+  }
+}
+
+function animateStatusByAppending(status) {
+  const originalText = statusLabel.innerHTML;
+
+  var count = 1;
+  animationByAppendation(originalText, status, count);
+  count += 1;
+  animatorInterval = setInterval(() => {
+    if (count > 3) {
+      count = 1;
+    }
+    animationByAppendation(originalText, status, count);
+    count += 1;
+  }, 1000);
+}
+
+function animationByAppendation(originalText, status, count) {
+  statusLabel.innerHTML = originalText + ". " + status + (".".repeat(count));
+}
+
+function stopAnimation(newStatus, color = null) {
+  clearInterval(animatorInterval);
+  updateStatus(newStatus, color);
 }

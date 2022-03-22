@@ -41,6 +41,10 @@ app.get("/getDeploy", (req, res) => {
   })
 });
 
+app.get("/getHighscore", (req, res) => {
+  
+});
+
 const getDeploy = function(deployHash) {
   return new Promise((resolve, reject) => {
     client.getDeploy(deployHash).then((response) => {
