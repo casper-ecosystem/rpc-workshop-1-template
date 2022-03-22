@@ -9,10 +9,20 @@ html {
 body {
   background-color: #996E89;
   font-family: "Comfortaa", sans-serif;
+  background: linear-gradient(45deg, #f1c0e8, #cfbaf0, #90dbf4, #8eecf5);
+  background: -moz-linear-gradient(45deg, #f1c0e8, #cfbaf0, #90dbf4, #8eecf5);
+  background: -o-linear-gradient(45deg, #f1c0e8, #cfbaf0, #90dbf4, #8eecf5);
+  background: -webkit-linear-gradient(45deg, #f1c0e8, #cfbaf0, #90dbf4, #8eecf5);
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
 }
 
-h1 {
-  font-family: "Lobster", serif;
+#title-status {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .message {

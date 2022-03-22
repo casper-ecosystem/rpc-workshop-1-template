@@ -6,7 +6,13 @@
 <body>
   <div class="container">
     <div id="intro-section">
-      <h1>Player vs Computer Tic-Tac-Toe</h1>
+
+      <div id="title-status">
+        <h2>Status: Not Doing Anything</h2>
+        <h1>Player vs Computer Tic-Tac-Toe</h1>
+      </div>
+
+
       <h2 id="score">Score: 0</h2>
       <h2 id="connected-account">Connected Account: </h2>
       <h2 class="message">Choose your player:</h2>
@@ -23,9 +29,9 @@
     <div class="row" id="grid-section">
       <div id="grid"></div>
     </div>
-    <button onclick="buttonPressed()">Publish</button>
-    <button onclick="setHighscore()">Send Deploy</button>
+    <button id="button" onclick="buttonPressed()">Connect</button>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="casper-js-sdk.js"></script>
   <script src="contract-interaction.js"></script>
   <script src="index.js"></script>

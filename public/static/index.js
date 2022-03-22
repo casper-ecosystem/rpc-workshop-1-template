@@ -152,3 +152,7 @@ resetButton.addEventListener('click', function(e) {
   e.preventDefault();
   resetGrid();
 });
+
+function updateStatus(status) {
+  document.querySelector("#title-status > h2").innerHTML = "Status: " + status;
+}
