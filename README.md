@@ -1,4 +1,4 @@
-# Ready Player Casper: Workshop 1
+# Ready Player Casper: Workshop 1 Template
 
 ## Install
 
