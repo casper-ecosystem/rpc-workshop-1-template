@@ -17,10 +17,9 @@ app.get('/', (req, res) => {
 
 app.post('/sendDeploy', (req, res) => {
   const signedJSON = req.body; //Get JSON from POST body
-  console.log(signedJSON);
   let signedDeploy = DeployUtil.deployFromJson(signedJSON).unwrap(); //Unwrap from JSON to Deploy object
   signedDeploy.send("http://3.208.91.63:7777/rpc").then((response) => { //Send Signed Deploy
-    res.send(response);
+    res.send(response); //Send this back to the frontend
   }).catch((error) => {
     console.log(error);
     return;
@@ -33,8 +32,8 @@ app.listen(port, () => {
 
 app.get("/getDeploy", (req, res) => {
   const hash = req.query.hash;
-  client.getDeploy(hash).then((response) => {
-    res.send(response[1].execution_results);
+  client.getDeploy(hash).then((response) => { //Calls getDeploy on the client with the deploy hash. Responds with current deploy status
+    res.send(response[1].execution_results); //Send this back to the frontend
     return;
   }).catch((error) => {
     res.send(error);
@@ -46,22 +45,11 @@ app.get("/getHighscore", (req, res) => {
   const hash = req.query.hash;
   console.log(hash);
   console.log(CLPublicKey.fromHex(hash).toAccountHashStr());
-  contract.queryContractDictionary("highscore_dictionary", CLPublicKey.fromHex(hash).toAccountHashStr().substring(13)).then((response) => {
-    console.log("Got highscore");
-    console.log(response);
+  contract.queryContractDictionary("highscore_dictionary", CLPublicKey.fromHex(hash).toAccountHashStr().substring(13)).then((response) => { //Query the contract's dictionary for this account's account hash. First 13 characters are removed because the return string from .toAccountHashStr() includes the prefix "account-hash-"
+    res.send(response.data); //Send this back to the frontend
     return;
   }).catch((error) => {
     res.send(error);
     return;
   })
 });
-
-const getDeploy = function(deployHash) {
-  return new Promise((resolve, reject) => {
-    client.getDeploy(deployHash).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      reject(error);
-    });
-  });
-}

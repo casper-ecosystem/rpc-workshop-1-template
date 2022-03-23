@@ -6,7 +6,7 @@ var userMark = '';
 var cells;
 var thatsGame = false;
 var score = 0;
-const statusLabel = document.querySelector("#title-status > h2");
+const statusLabel = document.querySelector("#title-status > #status");
 var animatorInterval = null;
 
 // add click listener to radio buttons
