@@ -74,6 +74,13 @@ function winner(a, b, c) {
     if (mark == userMark) {
       msg.textContent = "You won!";
       score += 1;
+      if (highscore != null) {
+        if (score > highscore) {
+          setHighscore(score);
+        }
+      } else {
+        setHighscore(score);
+      }
     } else {
       msg.textContent = "You lost!";
       score = 0;
@@ -101,6 +108,11 @@ function gameOver() {
 
 function setScore() {
   document.getElementById("score").textContent = "Score: " + score.toString();
+}
+
+function setHighscore(score) { //Update the label and highscore variable
+  document.getElementById("highscore").textContent = "Highscore: " + score.toString();
+  highscore = score;
 }
 
 // check cell combinations
