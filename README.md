@@ -1,2 +1,8 @@
-# rpc-workshop-1
-The repository hosting the entirety of Casper's first workshop as part of the Ready Player Casper Hackathon
+# Ready Player Casper: Workshop 1
+
+## Install
+
+git clone https://github.com/casper-ecosystem/rpc-workshop-1.git
+cd rpc-workshop-1
+npm install
+node server.js
